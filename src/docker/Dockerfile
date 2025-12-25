@@ -31,6 +31,7 @@ LABEL kubectl.version="${KUBECTL_VERSION}"
 LABEL yq.version="${YQ_VERSION}"
 
 # Install required packages and clean up
+ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
 RUN apt-get dist-upgrade -y
 RUN apt-get install -y --no-install-recommends \
