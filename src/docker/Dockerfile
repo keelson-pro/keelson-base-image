@@ -24,7 +24,7 @@ RUN VERSION_MAJOR_MINOR=$(echo "${VERSION}" | cut -d. -f1-2) && \
     fi
 
 # Set labels for metadata
-LABEL description="Keelson - Kubernetes image updater"
+LABEL description="Keelson - Keelson Base Image"
 LABEL version="${VERSION}"
 LABEL image.name="${TARGET_IMAGE_NAME}"
 LABEL kubectl.version="${KUBECTL_VERSION}"
