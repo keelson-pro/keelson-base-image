@@ -8,7 +8,7 @@ ARG VERSION
 ARG TARGET_IMAGE_NAME
 
 # Set the tool versions for use below
-ENV KUBECTL_VERSION=1.34.3
+ENV KUBECTL_VERSION=1.35.0
 ENV YQ_VERSION=4.50.1
 
 # Validate VERSION is provided
