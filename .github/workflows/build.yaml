@@ -1,4 +1,4 @@
-name: Docker Build Dockerfile
+name: Dockerfile Build
 
 on:
   push:
@@ -8,10 +8,8 @@ on:
 
 jobs:
   build:
-    uses: kube-kaptain/buildon-github-actions/.github/workflows/docker-build-dockerfile.yaml@kube-manifest-packaging-and-distribution
+    uses: kube-kaptain/buildon-github-actions/.github/workflows/docker-build-dockerfile.yaml@1.1.31
     permissions:
       contents: write
       packages: write
-    with:
-      block-slashes: true
-      block-conventional-commits: true
+      checks: write
