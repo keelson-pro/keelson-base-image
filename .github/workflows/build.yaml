@@ -2,9 +2,9 @@ name: Dockerfile Build
 
 on:
   push:
-    branches: [main]
+    branches: [main-1.35]
   pull_request:
-    branches: [main]
+    branches: [main-1.35]
 
 jobs:
   build:
