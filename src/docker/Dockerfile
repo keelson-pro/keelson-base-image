@@ -66,6 +66,24 @@ RUN eval CHECKSUM=\$KUBECTL_SHA512_${DOCKER_PLATFORM_CPU_ARCHITECTURE} && \
     echo "${CHECKSUM}  /usr/local/bin/kubectl" | sha512sum -c -
 RUN chmod +x /usr/local/bin/kubectl
 
-# Create non-root user for security
-RUN groupadd -r keelson
-RUN useradd -r -g keelson -s /bin/bash keelson
+# Create runtime user with ID in var for setting later as kube requires ID not name
+ENV KEELSON_USER_ID=4242
+RUN mkdir -p /home/keelson # Required for kubectl to work correctly
+RUN groupadd -g ${KEELSON_USER_ID} keelson
+RUN useradd -u ${KEELSON_USER_ID} -g keelson -d /home/keelson -s /bin/bash keelson
+RUN chown keelson:keelson /home/keelson
+
+# Create directory structure for operational needs
+RUN mkdir -p /keelson/bin        # Deployment scripts
+RUN mkdir -p /keelson/secrets    # Pulled secrets cache dir
+RUN mkdir -p /keelson/work       # Working dir for processing, logging, etc
+
+# Put the keelson scripts on the path so we can run them naturally
+ENV PATH="/keelson/bin:${PATH}"
+
+# Make the working dirs writeable and set the main one as the workdir
+RUN chown keelson:keelson /keelson/secrets
+RUN chown keelson:keelson /keelson/work
+WORKDIR /keelson/work
+
+ENV PS1="\u@\$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace 2>/dev/null || echo NOT_SET)/\h:\w\\$ "
