@@ -48,7 +48,8 @@ RUN apt-get install -y --no-install-recommends \
     curl \
     ca-certificates \
     netcat-openbsd \
-    skopeo
+    skopeo \
+    amazon-ecr-credential-helper
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
