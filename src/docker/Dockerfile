@@ -82,6 +82,10 @@ RUN mkdir -p /keelson/work       # Working dir for processing, logging, etc
 # Put the keelson scripts on the path so we can run them naturally
 ENV PATH="/keelson/bin:${PATH}"
 
+# Deterministic time and text handling for every process in the image
+ENV TZ=UTC
+ENV LC_ALL=C
+
 # Make the working dirs writeable and set the main one as the workdir
 RUN chown keelson:keelson /keelson/secrets
 RUN chown keelson:keelson /keelson/work
