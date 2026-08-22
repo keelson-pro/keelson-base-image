@@ -1,9 +1,9 @@
-apiVersion: kaptain.org/1.16
+apiVersion: kaptain.org/1.28
 kind: docker-build-dockerfile
 metadata:
   description: "Keelson base image - lean Debian Trixie slim with kubectl, yq 4, skopeo"
 
 spec:
   layers:
-    - ghcr.io/kube-kaptain/layer/layer-github-flow-strict:[1.3,2.0)
-    - ghcr.io/kube-kaptain/layer/layer-image-environment-base:[1.2,2.0)
+    - ghcr.io/kube-kaptain/layer/layer-github-flow-strict:[1.3]
+    - ghcr.io/kube-kaptain/layer/layer-image-environment-base:[1.2]
