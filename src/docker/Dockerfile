@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 # Copyright (c) 2025-2026 Keelson contributors (Fred Cooke)
 
-FROM debian:trixie-20260505-slim
+FROM debian:trixie-20260803-slim
 # Always use the most specific tag possible
 
 # Required plain semantic version tag - X.Y.Z eg 1.23.4
