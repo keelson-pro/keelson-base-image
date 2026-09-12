@@ -72,10 +72,11 @@ RUN chmod +x /usr/local/bin/kubectl
 
 # Create runtime user with ID in var for setting later as kube requires ID not name
 ENV KEELSON_USER_ID=4242
-RUN mkdir -p /home/keelson # Required for kubectl to work correctly
+ENV HOME=/home/keelson
+RUN mkdir -p ${HOME} # Required for kubectl to work correctly
 RUN groupadd -g ${KEELSON_USER_ID} keelson
-RUN useradd -u ${KEELSON_USER_ID} -g keelson -d /home/keelson -s /bin/bash keelson
-RUN chown keelson:keelson /home/keelson
+RUN useradd -u ${KEELSON_USER_ID} -g keelson -d ${HOME} -s /bin/bash keelson
+RUN chown keelson:keelson ${HOME}
 
 # Create directory structure for operational needs
 RUN mkdir -p /keelson/bin        # Deployment scripts
