@@ -1,4 +1,4 @@
-apiVersion: kaptain.org/1.29
+apiVersion: kaptain.org/1.39
 kind: docker-build-dockerfile
 metadata:
   description: "Keelson base image - lean Debian Trixie slim with kubectl, yq 4, skopeo"
